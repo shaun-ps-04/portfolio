@@ -10,7 +10,7 @@
     {% endif %} -->
     
     <div class="post_detail__image">
-        <img src="{% static post.image.url %}" alt="" width="150">
+        <img src="{{ post.image.url }}" alt="" width="150">
     </div>
     
     <div class="post_detail__title">{{post.title}}</div>

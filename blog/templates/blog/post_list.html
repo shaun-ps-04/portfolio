@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="img-container">
-                <img src="{% if post.image %}{% static post.image.url %}{% endif %}" alt=""/>
+                <img src="{% if post.image %}{{ post.image.url }}{% endif %}" alt=""/>
             </div>
             
             <div class="post_list__item__details">

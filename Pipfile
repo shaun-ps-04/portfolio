@@ -14,6 +14,8 @@ sendgrid = "*"
 gunicorn = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 

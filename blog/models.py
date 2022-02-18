@@ -32,7 +32,7 @@ class Post(TimeStampMixin):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         if self.image == '':  # Change image to default when image is deleted
-            self.image = 'default.png'
+            self.image = 'images/default.png'
         super(Post, self).save(*args, **kwargs)
 
 
