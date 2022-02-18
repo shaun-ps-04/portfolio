@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="home">
+    <h2 class="home__title--1">Hey, I'm Sean!</h2>
+    <h3 class="home__title--2">
+        A Full Stack Web Developer based in London
+    </h3>
+    <img src="{% static 'images/home.svg' %}" alt="A Cartoon of a Programmer" class="home__image">
+    
+    <div class="btn home__btn">
+        <a href="{% url 'blog:post_list' %}">View Posts</a>
+    </div>
+</div>
+
+{% endblock content %}

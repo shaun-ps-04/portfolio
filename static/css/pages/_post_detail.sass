@@ -1,0 +1,52 @@
+@use '../components/_gradient_container' as gc
+
+
+.post_detail
+    width: 30rem
+    max-width: 90%
+    margin: 1rem auto
+
+    &__edit
+        margin: 1rem 1rem 1rem auto
+        @include gc.gradient_container($bd-radius: .3rem, $width: 5rem)
+
+        > a
+            display: flex
+            align-items: center
+            justify-content: center
+            text-decoration: none
+
+    &__image
+        margin: 1rem auto
+        width: 10rem
+        height: 10rem
+        @include gc.gradient_container($bd-radius: .3rem, $padding: .1rem, $width: 10rem !important, $height: 10rem !important)
+
+    &__title
+        font-size: 1.8rem
+        width: fit-content
+        margin: 2rem auto
+
+    &__link
+        margin: 1rem 0
+
+        > a
+            text-decoration: none
+
+
+    .container
+        @include gc.gradient_container($bd-radius: .5rem, $padding: .1rem, $height: auto, $width: auto)
+        
+    
+
+    &__description
+        padding: 1rem
+        border-radius: .5rem
+        font-size: .9rem
+        line-height: 1.3rem
+
+        hr
+            margin: 1rem 0 !important
+
+    &__tags
+        margin: 1rem 0

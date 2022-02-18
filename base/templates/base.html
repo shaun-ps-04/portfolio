@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <title>Portfolio</title>
+    <script src="{% static 'js/3rd_party/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/3rd_party/anime.min.js' %}"></script>
+    <script src="{% static 'js/3rd_party/tinymce_5.10.3/tinymce/tinymce.min.js' %}"></script>
+    {{form.media}}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script src="https://kit.fontawesome.com/61b5fec5d5.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <!-- Themes -->
+    <input type="checkbox" name="" id="theme_toggle" checke>
+    <div id="theme_container" class="dark-mode">
+
+        <!-- Messages -->
+        <div class="message__container">
+            {% for message in messages %}
+                <div class="message message__{{ message.tags }}">
+                    <span>{{ message|safe }}</span>
+                    <i class="fas fa-times-circle"></i>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Subscribe Form -->
+        <div class="cover hidden"></div>
+        <div class="popup hidden" data-popup-sub=""> <!-- data is for popup_sub.js -->
+            <div>
+                
+                <form action="{% url 'blog:subscribe' %}" method="POST" class="sub_form">
+                    {% csrf_token %}
+                    <p>Subscribe to be notified of new articles and projects!</p>
+                    <div class="sub_form__email_container">
+                        <input type="email" name="email" maxlength="254" placeholder="email..."
+                            required id="id_email">
+                    </div>
+                    <div class="sub_form__submit_container">
+                        <input type="submit" value="Subscribe">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        {% include "partials/navigation.html" %}
+
+        <div id="page">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <!-- % include "partials/footer.html" % -->
+
+    </div>
+
+    <!-- Javascript -->
+    <script src="{% static 'js/base/popup_sub.js' %}"></script>
+    <script src="{% static 'js/base/messages.js' %}"></script>
+    <script src="{% static 'js/base/local_storage.js' %}"></script>
+    <script src="{% static 'js/base/sub_request.js' %}"></script>
+
+</body>
+</html>

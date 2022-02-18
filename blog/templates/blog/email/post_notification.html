@@ -1,0 +1,21 @@
+{% autoescape off %}
+<div style="padding: 20px; width: 100vw;">
+    <p>
+        Hello {{ user.email }}!
+        <br>
+        I've made another post. Here's a snippet.
+    </p>
+
+    <h1 style="margin-left: auto; margin-right: auto;">{{ title }}</h1>
+
+    <div>{{ description }}</div>
+
+    <br>
+    <div>...</div>
+    <br>
+
+    <a href="http://{{ domain }}{% url 'blog:post_detail' post_slug %}">
+        Read Full Post &gt;
+    </a>
+</div>
+{% endautoescape %}

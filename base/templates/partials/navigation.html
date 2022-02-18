@@ -1,0 +1,62 @@
+{% load static %}
+
+<!-- Toggler for nav and header (brings out nav and changes width of header) -->
+<input type="checkbox" name="" id="nav_toggle_checkbox" checked>  <!-- TODO: Change this when ready-->
+
+<!-- Name, Photo and Subscribe Button -->
+<header class="header">
+    <div class="profile">
+        <div class="img-container" style="width: 3rem; height: 3rem;">
+            <img src="{% static 'images/me.jpg' %}" alt="" width="60">
+        </div>
+        <span>Sean Stocker</span>
+    </div>
+    <div class="other">
+        <label for="theme_toggle" class="theme_toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 64V448C362 448 448 362 448 256C448 149.1 362 64 256 64z"/></svg>
+        </label>
+        <div class="btn" data-popup-sub-trigger=""><div>Subscribe</div></div>
+    </div>
+</header>
+
+<!-- Navigation -->
+<nav class="navigation">
+    <label for="nav_toggle_checkbox" class="nav_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M96 480h64C177.7 480 192 465.7 192 448S177.7 416 160 416H96c-17.67 0-32-14.33-32-32V128c0-17.67 14.33-32 32-32h64C177.7 96 192 81.67 192 64S177.7 32 160 32H96C42.98 32 0 74.98 0 128v256C0 437 42.98 480 96 480zM504.8 238.5l-144.1-136c-6.975-6.578-17.2-8.375-26-4.594c-8.803 3.797-14.51 12.47-14.51 22.05l-.0918 72l-128-.001c-17.69 0-32.02 14.33-32.02 32v64c0 17.67 14.34 32 32.02 32l128 .001l.0918 71.1c0 9.578 5.707 18.25 14.51 22.05c8.803 3.781 19.03 1.984 26-4.594l144.1-136C514.4 264.4 514.4 247.6 504.8 238.5z"/></svg>
+    </label>
+
+    <a href="{% url 'home' %}" class="{% if active == 'home' %}active{% endif %}">Home</a>
+    <a href="{% url 'blog:post_list' %}" class="{% if active == 'post_list' %}active{% endif %}">Posts</a>
+    <a 
+        href="{% url 'blog:post_list' %}?post-type=article" 
+        class="{% if active == 'articles' %}active{% endif %}"
+    >
+        Articles
+    </a>
+
+    <a 
+        href="{% url 'blog:post_list' %}?post-type=package" 
+        class="{% if active == 'packages' %}active{% endif %}"
+    >
+        Packages
+    </a>
+
+    <a 
+        href="{% url 'blog:post_list' %}?post-type=website" 
+        class="{% if active == 'websites' %}active{% endif %}"
+    >
+        Websites
+    </a>
+
+    <!-- {% if user.is_authenticated %}
+        <hr class="hr">
+        <a 
+            href="{% url 'blog:post_create' %}" 
+            class="{% if active == 'post_create' %}active{% endif %}"
+        >
+            Create Post +
+        </a>
+        <a href="{% url 'auth:logout' %}">Logout</a>
+    {% endif %} -->
+
+</nav>

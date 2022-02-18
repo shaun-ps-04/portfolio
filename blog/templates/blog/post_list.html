@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load transform %}
+{% block content %}
+<form action="{% url 'blog:post_list' %}" method="GET" class="search_form">
+
+    <input type="text" name="post-title" id="" placeholder="title">
+
+    <select name="post-type" id="">
+        <option value="empty">Choose a type...</option>
+        {% for tag in tags %}
+            <option value="{{tag}}">{{tag|title}}</option>
+        {% endfor %}
+    </select>
+
+    <select name="post-count" id="">
+        <option value="5">5</option>
+        <option value="5">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+    </select>
+
+    <input type="submit" value="Search">
+</form>
+
+
+<div class="post_list">
+    {% for post in page_obj %}
+        <div class="post_list__item">
+            <a href="{% url 'blog:post_detail' post.slug %}" class="post_list__item__link"></a>
+            <div class="post_list__item__cover">
+                <div class="post_list__item__cover__button">
+                    <p>Read More</p>
+                </div>
+            </div>
+            <div class="img-container">
+                <img src="{% if post.image %}{% static post.image.url %}{% endif %}" alt=""/>
+            </div>
+            
+            <div class="post_list__item__details">
+                <h3 class="post_list__item__details__title">
+                    {{post.title}}
+                </h3>
+                <div class="post_list__item__details__description">
+                    {% autoescape on %}
+                        {{post.description|safe|truncatechars_html:180}}
+                    {% endautoescape %}
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No posts :(</p>
+    {% endfor %}
+</div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <!-- <a href="?page=1">&laquo; first</a> -->
+            <a href="?{% query_transform page=1 %}">&laquo; first</a>
+            <!-- <a href="?page={{ page_obj.previous_page_number }}">previous</a> -->
+            <a href="?{% query_transform page=page_obj.previous_page_number %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <!-- <a href="?page={{ page_obj.next_page_number }}">next</a> -->
+            <a href="?{% query_transform page=page_obj.next_page_number %}">next</a>
+            <!-- <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a> -->
+            <a href="?{% query_transform page=page_obj.paginator.num_pages %}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock content %}

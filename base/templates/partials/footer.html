@@ -1,0 +1,7 @@
+<footer id="footer">
+    {% if user.is_authenticated %}
+        <a href="{% url 'auth:logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'auth:login' %}">Admin Login</a>
+    {% endif %}
+</footer>

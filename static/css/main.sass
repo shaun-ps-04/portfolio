@@ -1,0 +1,95 @@
+@use './_modules'
+@use './themes/_colors' as c
+@use './base/_variables' as v
+@use './components/_scrollbar' as s
+@use './components/_gradient_container' as gc
+@use './components/_components' as comp
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap')
+
+:root 
+    font-family: 'Roboto', sans-serif
+    letter-spacing: 1px
+    box-sizing: border-box !important
+    font-size: 20px
+    font-weight: 400
+    padding: 0
+    margin: 0
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box !important
+    
+    // transition: color v.$transition-speed, background-color v.$transition-speed, fill v.$transition-speed  // Yet to be tested
+
+
+@mixin light-theme
+    background-color: c.$light
+    border-color: c.$dark
+    color: c.$dark !important
+    fill: c.$dark !important
+    *:not(img)
+        background-color: c.$light
+        border-color: c.$dark
+        color: c.$dark !important
+        fill: c.$dark !important
+    header.header, footer#footer  //, nav.navigation
+        box-shadow: 0 0 12px 1px c.$dark
+    nav.navigation
+        background-color: #DDD
+
+@mixin dark-theme
+    background-color: c.$dark
+    border-color: c.$light
+    color: c.$light !important
+    fill: c.$light !important
+    *:not(img)
+        background-color: c.$dark
+        border-color: c.$light
+        color: c.$light !important
+        fill: c.$light !important
+    header.header //, nav.navigation 
+        box-shadow: 0 0 12px 1px c.$light
+    nav.navigation
+        background-color: #111
+
+#theme_container
+    width: 100vw
+    height: 100vh
+    overflow-x: hidden
+    @include s.scrollbar($width: v.$scrollbar-width)
+
+
+.gradient_container
+    @include gc.gradient_container
+
+#theme_toggle
+    display: none
+
+    &:checked + #theme_container
+        @include light-theme
+
+.light-mode
+    @include light-theme
+
+.dark-mode
+    @include dark-theme
+    *:not(.tox-tinymce *, .post_list__item__cover)
+        @include dark-theme
+
+.hr
+    width: 90%
+    border-color: c.$light
+    margin: 1rem auto
+
+
+.cover
+    @include comp.cover
+
+.hidden
+    pointer-events: none !important
+    opacity: 0 !important
+
+.popup
+    @include comp.popup($height: 12rem)
+

@@ -1,0 +1,15 @@
+<!-- TODO: Change this into a partial -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>Subscribe</h1>
+
+<form action="{% url 'blog:subscribe' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Subscribe">
+</form>
+
+{% endblock content %}

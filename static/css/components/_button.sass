@@ -1,0 +1,35 @@
+@use '../themes/_colors' as c
+    
+@mixin button($width: fit-content, $height: 2rem)
+    background: c.$gradient-1
+    background-image: c.$gradient
+
+    width: $width
+    height: $height
+    border-radius: .3rem
+    position: relative
+    text-decoration: none
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: .3rem
+    padding: 0.05rem
+    transition: transform .3s
+    cursor: pointer
+
+    &:hover
+        transform: scale(1.1)
+
+    > div, a
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 100%
+        height: 100%
+        border-radius: .3rem
+        background-color: c.$dark
+        padding: 0 .5rem
+
+
+.btn
+    @include button

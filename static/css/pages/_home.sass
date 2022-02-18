@@ -1,0 +1,50 @@
+
+.home
+    margin: auto
+    margin-top: 4rem
+    margin-bottom: 5rem
+    width: fit-content
+    max-width: 90%
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    &__title--1
+        align-self: flex-start
+        animation: fade-in 2s forwards
+        opacity: 0
+
+    &__title--2
+        align-self: flex-start
+        margin-top: 1rem
+        animation: fade-in 2s .5s forwards
+        opacity: 0
+
+    &__image
+        margin-top: 2rem
+
+        min-width: 10rem
+        width: 20rem
+        max-width: 80%
+        animation: fade-in 2s 1.2s forwards
+        opacity: 0
+
+    &__btn
+        margin-top: 4rem
+        animation: fade-in 2s 1.9s forwards
+        opacity: 0
+        width: 10rem
+        height: 2.5rem
+
+        > a
+            text-decoration: none
+
+
+@keyframes fade-in
+    from
+        transform: translateY(3rem)
+        opacity: 0
+    to
+        transform: translateY(0)
+        opacity: 1
+     

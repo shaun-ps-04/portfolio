@@ -1,0 +1,7 @@
+@use '../base/_variables' as v
+
+
+@mixin ignore-nav($max-width: 480)
+    width: calc( 100vw - v.$nav-width )
+    @media screen and (max-width: $max-width)
+        width: 100vw

@@ -1,0 +1,20 @@
+@use './_navigation' as nav
+@use '../base/_variables' as v
+@use '../utils/_utils' as u
+@use '../themes/_colors' as c
+
+
+footer#footer
+    margin-left: auto
+    height: v.$footer-height
+    transition: width v.$transition-speed
+    padding: 1rem
+
+    // border-top: 1px solid #EEE
+    z-index: 1
+
+    box-shadow: 0 0 12px 1px c.$light
+
+    @include u.ignore-nav($max-width: v.$device-md)
+
+    

@@ -1,0 +1,128 @@
+@use '../themes/_colors' as c
+@use '../base/_variables' as v
+@use '../components/_gradient_container' as gc
+
+$br: .2rem
+
+.search_form
+    width: fit-content
+    max-width: 90%
+    margin: 2rem auto 0 auto
+    padding: 0 .5rem
+    padding-top: .5rem
+    border-radius: $br
+
+    > *
+        margin-right: 0.5rem
+        margin-bottom: 0.5rem
+        height: 1.8rem !important
+        font-size: 1rem
+
+    > input[name="post-title"]
+        width: 8rem
+        border: 1px solid c.$light
+        border-radius: $br
+        padding: .2rem .3rem
+
+    > select[name="post-type"]
+        border-radius: $br
+        padding: .2rem .3rem
+
+    > select[name="post-count"]
+        border-radius: $br
+        padding: .2rem .3rem
+
+    > input[type="submit"]
+        width: 4rem
+        border: 1px solid c.$light
+        border-radius: $br
+        padding: .2rem .3rem
+        cursor: pointer
+
+
+.post_list
+    margin-left: auto
+    margin-right: auto
+    width: 90%
+    max-width: 50rem
+    padding-top: 1rem
+    display: flex
+    flex-direction: row
+    flex-wrap: wrap
+    justify-content: space-between
+    // margin-bottom: v.$footer-height
+
+    &__item
+        margin: 1rem 0
+        display: flex
+        position: relative
+        width: 25rem
+        max-width: 25rem
+        height: 10rem
+        max-height: 10rem
+        align-items: center
+        justify-content: flex-start
+
+        @media screen and (max-width: v.$device-sm)
+            height: 6rem
+            max-height: 6rem
+
+        &__link
+            position: absolute
+            width: 100%
+            height: 100%
+            opacity: 0
+
+            &:hover + .post_list__item__cover
+                opacity: 1
+
+        &__cover
+            position: absolute
+            width: 102%
+            height: 108%
+            background-color: c.$dark-50 !important
+            display: grid
+            place-items: center
+            border-radius: .3rem
+            pointer-events: none
+            opacity: 0
+            transition: opacity .3s
+
+            &__button
+                @include gc.gradient_container($bd-radius: .3rem, $padding: .1rem, $height: 2rem !important, $width: 10rem !important)
+                > p
+                    display: grid
+                    place-items: center
+
+
+        > div.img-container
+            @include gc.gradient_container($bd-radius: .3rem, $padding: .1rem, $height: 10rem !important, $width: 10rem !important)
+
+            @media screen and (max-width: v.$device-sm)
+                @include gc.gradient_container($bd-radius: .3rem, $padding: .1rem, $height: 6rem !important, $width: 6rem !important)
+            
+
+        &__details
+            width: calc(100% - 10rem)
+            height: 100%
+            padding-left: 1rem
+            overflow: hidden
+            align-self: flex-start
+
+            @media screen and (max-width: v.$device-sm)
+                width: calc(100% - 6rem)
+
+            &__title
+                margin-bottom: 0.8rem
+
+            &__description
+                font-size: 0.8rem
+
+
+// TODO: Change name and stuff
+.pagination
+    width: fit-content
+    margin-left: auto
+    margin-right: auto
+    margin-top: 1rem
+    margin-bottom: v.$footer-height + 2rem

@@ -1,0 +1,10 @@
+{% autoescape off %}
+<p>
+    Hello {{ user.email }}!
+    <br>
+    Please click on the link below to confirm your subsription.
+</p>
+<a href="http://{{ domain }}{% url 'blog:sub_conf' uidb64=uid token=token %}">
+    Confirm
+</a>
+{% endautoescape %}

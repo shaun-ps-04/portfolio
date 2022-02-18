@@ -1,0 +1,11 @@
+@use '../base/_variables' as v
+@use '../utils/_utils' as u
+    
+div#page
+    z-index: 5
+    margin-left: auto
+    width: calc( 100vw - v.$nav-width )
+    min-height: calc( 100vh - v.$footer-height - v.$header-height )
+    transition: width v.$transition-speed
+    @include u.ignore-nav($max-width: v.$device-md)
+
